@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 2.00426, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.227451, 0.392157, 0.65098, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 2 )
+
+[node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99812, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = null

@@ -29,12 +29,5 @@ material/0 = null
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.0566755, 0.998393, 0, -0.998393, -0.0566755, 0, 18.5767, 26.2125 )
 
-[node name="CameraPivot" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.821617, 0.57004, 0, -0.57004, 0.821617, 0, 0, 0 )
-
-[node name="Camera" type="Camera" parent="CameraPivot"]
-transform = Transform( 1, 0, 0, 0, 0.973802, 0.227399, 0, -0.227399, 0.973802, 0, 3.93434, 26.7832 )
-current = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
