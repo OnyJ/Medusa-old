@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
 
@@ -11,3 +12,5 @@ transform = Transform( 1, 0, 0, 0, 0.764438, 0.644698, 0, -0.644698, 0.764438, 0
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
 transform = Transform( 1, 0, 0, 0, 0.993429, 0.114452, 0, -0.114452, 0.993429, 0, 1.17699, 26.4278 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]

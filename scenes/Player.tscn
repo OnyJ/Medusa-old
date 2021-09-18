@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 1, 2.00426, 1 )
+extents = Vector3( 0.4609, 2.31144, 0.46923 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.227451, 0.392157, 0.65098, 1 )
@@ -9,13 +9,34 @@ albedo_color = Color( 0.227451, 0.392157, 0.65098, 1 )
 [sub_resource type="CubeMesh" id=3]
 material = SubResource( 2 )
 
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.227451, 0.392157, 0.65098, 1 )
+
+[sub_resource type="CapsuleMesh" id=5]
+material = SubResource( 4 )
+
+[sub_resource type="SphereMesh" id=6]
+
 [node name="Player" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99812, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50951, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.793396, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, 1.5, 0, 0, 0, 0.5, 0, 0, 0 )
 mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Head" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Head"]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.5, 0, 1.84009, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Head"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.889, 0.796211 )
+mesh = SubResource( 6 )
 material/0 = null
