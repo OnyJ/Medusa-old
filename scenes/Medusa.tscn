@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Medusa.gd" type="Script" id=1]
 
@@ -10,6 +10,14 @@ albedo_color = Color( 0.294118, 0, 0.815686, 1 )
 [sub_resource type="CylinderMesh" id=3]
 material = SubResource( 2 )
 
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 4.10366, 1, 6.52879 )
+
+[sub_resource type="CubeMesh" id=6]
+
 [node name="Medusa" type="KinematicBody"]
 transform = Transform( 0.8, 0, 0, 0, 1.8, 0, 0, 0, 0.7, 0, 1.79955, 0 )
 script = ExtResource( 1 )
@@ -19,4 +27,20 @@ shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454127, 0.784512 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Area" type="Area" parent="."]
+
+[node name="WideEyeDetector" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.84885 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/WideEyeDetector"]
+transform = Transform( 4, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -1.03843, 5.81324 )
+mesh = SubResource( 6 )
 material/0 = null

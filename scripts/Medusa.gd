@@ -46,19 +46,6 @@ func _on_Timer_timeout():
 
 
 ##########################
-# func move_randomly
-# (whithout falling)
-
-# _physics_process(delta): -> if chasing == false:
-# func chose_a_direction()
-#	avoid obstacles and void
-#	
-# 	func walk_for(rand_sec)
-# 		func dodge_obstacles_and_void
-# 		func turn_if_obstacles
-# 	func wait(rand_sec)
-
-##########################
 # detect player
 # -> large_eye_detector
 # _on_LargeEyeDetector_??_entered (= medusa sees player):
@@ -78,6 +65,19 @@ func _on_Timer_timeout():
 # kill when eyes meet
 # -> small_eye_detector meets player's small_eye_detector
 
+
+##########################
+# func move_randomly
+# (whithout falling)
+
+# _physics_process(delta): -> if chasing == false:
+# func chose_a_direction()
+#	avoid obstacles and void
+#	
+# 	func walk_for(rand_sec)
+# 		func dodge_obstacles_and_void
+# 		func turn_if_obstacles
+# 	func wait(rand_sec)
 
 ##########################
 # (spawn randomly)
