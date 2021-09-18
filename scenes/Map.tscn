@@ -36,4 +36,22 @@ environment = SubResource( 4 )
 [node name="Statues" type="Node" parent="."]
 
 [node name="Statue" parent="Statues" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.259428, 1.77376, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.807386, 1.77376, -8.76032 )
+
+[node name="Statue2" parent="Statues" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.71962, 1.77376, -10.9053 )
+
+[node name="Statue3" parent="Statues" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17018, 1.77376, 4.53693 )
+
+[node name="Statue4" parent="Statues" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0593, 1.77376, -1.57725 )
+
+[node name="Statue5" parent="Statues" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4221, 1.77376, 8.59258 )
+
+[node name="Statue6" parent="Statues" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.92439, 1.77376, 10.496 )
+
+[node name="Statue7" parent="Statues" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9653, 1.77376, -0.956352 )
