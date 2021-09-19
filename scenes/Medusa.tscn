@@ -55,7 +55,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="WideEyeDetector"]
-transform = Transform( 1, 0, 1.13687e-13, 0, 1, 0, 0, 0, 1, -4.34156e-06, 0, 12.7417 )
+transform = Transform( 1, 0, -7.11332e-08, 0, 1, 0, -9.29089e-08, 0, 1.20876, -6.64588e-06, 0, 19.5044 )
 shape = SubResource( 6 )
 [connection signal="body_entered" from="ShortEyeDetector" to="." method="_on_ShortEyeDetector_body_entered"]
 [connection signal="body_entered" from="WideEyeDetector" to="." method="_on_WideEyeDetector_body_entered"]
