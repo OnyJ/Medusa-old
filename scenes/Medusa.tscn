@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Medusa.gd" type="Script" id=1]
 
@@ -10,37 +10,39 @@ albedo_color = Color( 0.294118, 0, 0.815686, 1 )
 [sub_resource type="CylinderMesh" id=3]
 material = SubResource( 2 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=4]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 4.10366, 1, 6.52879 )
-
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 3.02191, 1, 5.22927 )
 
 [node name="Medusa" type="KinematicBody"]
-transform = Transform( 0.8, 0, 0, 0, 1.8, 0, 0, 0, 0.7, 0, 1.79955, 0 )
+transform = Transform( -0.8, 0, -2.7259e-07, 0, 1.5, 0, 3.11531e-07, 0, -0.7, 0, 1.47819, 0 )
+collision_layer = 4
+collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+layers = 4
 mesh = SubResource( 3 )
 material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454127, 0.784512 )
-mesh = SubResource( 5 )
+layers = 4
+mesh = SubResource( 4 )
 material/0 = null
 
-[node name="Area" type="Area" parent="."]
+[node name="WideEyeDetector" type="Area" parent="." groups=[
+"medusa",
+]]
+collision_layer = 4
+collision_mask = 2
 
-[node name="WideEyeDetector" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.84885 )
-shape = SubResource( 4 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Area/WideEyeDetector"]
-transform = Transform( 4, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, -1.03843, 5.81324 )
-mesh = SubResource( 6 )
-material/0 = null
+[node name="CollisionShape" type="CollisionShape" parent="WideEyeDetector"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, -8.52651e-14, 0, 1, 6.82121e-13, 0.0236223, 5.95281 )
+shape = SubResource( 5 )
+[connection signal="body_entered" from="WideEyeDetector" to="." method="_on_WideEyeDetector_body_entered"]

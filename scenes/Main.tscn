@@ -11,3 +11,4 @@ transform = Transform( 1, 0, 0, 0, 0.764438, 0.644698, 0, -0.644698, 0.764438, 0
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
 transform = Transform( 1, 0, 0, 0, 0.993429, 0.114452, 0, -0.114452, 0.993429, 0, 1.17699, 26.4278 )
+current = true

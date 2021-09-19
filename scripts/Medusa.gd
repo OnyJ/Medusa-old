@@ -20,16 +20,42 @@ var path_node = 0 # keep path on which node we're currently on
 var speed = 12
 onready var nav = get_parent() # nav mesh that contains the whole world geometry
 onready var player = $"../../../Player"
+onready var player_position = player.global_transform.origin
 #####
 
 # var chasing = false
+# enum = multiple constants in same place
+enum {
+	CHILL
+	CHASE
+}
+var state = CHILL
+onready var raycast = $RayCast
+export var gravity = 75
 
 
 func _physics_process(delta):
-	follow_player()
+	look_at_player()
+	follow_player(delta)
+	
+	# if collision, chase for x seconds
+	match state: # like a switch
+		CHILL:
+			pass
+		CHASE:
+#			print("chasing")
+			pass
 
 
-func follow_player():
+func look_at_player():
+	look_at_from_position(global_transform.origin, player_position, Vector3.UP)
+#	look_at(player_position, Vector3.UP)
+#	self.rotate(Vector3.UP, rotation.y)
+#	self.rotate_y()
+#	direction = velocity.rotated(Vector3.UP, rotation.y)
+	pass
+
+func follow_player(delta):
 	if path_node < path.size():
 		var direction = (path[path_node] - global_transform.origin)
 		if direction.length() < 1:
@@ -37,12 +63,17 @@ func follow_player():
 		else:
 			move_and_slide(direction.normalized() * speed, Vector3.UP)
 
+
 func move_to(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	path_node = 0
 
 func _on_Timer_timeout():
 	move_to(player.global_transform.origin) # location of player
+
+
+func _on_WideEyeDetector_body_entered(body):
+	print("player entered")
 
 
 ##########################
@@ -81,5 +112,4 @@ func _on_Timer_timeout():
 
 ##########################
 # (spawn randomly)
-
 
