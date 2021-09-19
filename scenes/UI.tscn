@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://assets/start_button.png" type="Texture" id=2]
 [ext_resource path="res://assets/start_button_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/start_button_hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/SztyletBold-aOKK.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/Medusa_black_bg_transparent.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -64,8 +73,10 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -198.892
-margin_right = 202.108
+margin_left = -197.726
+margin_top = -1.16635
+margin_right = 203.274
+margin_bottom = -1.16638
 color = Color( 0.854902, 0.780392, 0.298039, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,13 +100,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HUD" type="Node" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+anchor_right = 0.097
+margin_left = 116.679
+margin_top = 73.8355
+margin_right = 748.679
+margin_bottom = 370.836
+rect_rotation = -3.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="Control" parent="."]
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TimeScoreLabel" type="Label" parent="HUD"]
-margin_left = 310.416
-margin_top = 9.9169
-margin_right = 391.416
-margin_bottom = 23.9169
+margin_left = 289.422
+margin_top = 13.416
+margin_right = 447.422
+margin_bottom = 44.416
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Score : 0 sec"
 __meta__ = {
