@@ -1,12 +1,6 @@
 extends KinematicBody
 
 # TODO
-# required :
-# x follow player
-# x detect player (far/near)
-# x follow when detected for x sec
-# - kill when eyes meet
-# later :
 # - move randomly / stroll
 # - spawn randomly
 
@@ -77,27 +71,6 @@ func _on_WideEyeDetector_body_entered(body):
 
 func _on_WideEyeDetector_body_exited(body):
 	looking_at_player = false
-
-
-##########################
-# detect player
-# -> large_eye_detector
-# _on_LargeEyeDetector_??_entered (= medusa sees player):
-# 	func follow_player_during(sec)
-# _on_SmallEyeDetector_??_entered_with_PlayerEyes (= eyes meet):
-# 	func player_turns_into_statue()
-#		animation() > die() + queue free > gameover > menu
-# _on_NearDetection_??_entered (player at <= 1m from medusa):
-# 
-
-##########################
-# follow during timeQty (which is random)
-# -> need tutorial
-
-
-##########################
-# kill when eyes meet
-# -> small_eye_detector meets player's small_eye_detector
 
 
 ##########################
