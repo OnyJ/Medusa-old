@@ -28,6 +28,7 @@ onready var player = $"../../../Player"
 func _physics_process(delta):
 	match state:
 		CHILL:
+			# search_player:
 			rotate_y(-0.05)
 		CHASE:
 			print("chasing")
@@ -35,7 +36,8 @@ func _physics_process(delta):
 			follow_player(delta)
 			yield(get_tree().create_timer(chase_time), "timeout")
 			state = CHILL
-			chase_time = 4
+			chase_time = 0
+			add_chase_time()
 			print("stop chasing")
 
 
@@ -43,7 +45,7 @@ func look_at_player():
 	if !looking_at_player:
 		rotate_y(0.05)
 	elif state == CHASE and looking_at_player:
-		chase_time += 3
+		add_chase_time()
 
 func follow_player(delta):
 	if path_node < path.size():
@@ -53,10 +55,13 @@ func follow_player(delta):
 		else:
 			move_and_slide(direction.normalized() * speed, Vector3.UP)
 
-
 func move_to(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	path_node = 0
+
+func add_chase_time():
+	chase_time += 1 + randi() % 5
+
 
 func _on_Timer_timeout():
 	move_to(player.global_transform.origin)
