@@ -8,13 +8,16 @@ func show_screen(name):
 	match name:
 		"GameOver":
 			$HUD/ScoreTimer.stop()
+			$HUD/ScoreBackground.hide()
 			$GameOver.show()
 			yield(get_tree().create_timer(1.0), "timeout")
 		"Menu":
 			$GameOver.hide()
+			$HUD/ScoreBackground.hide()
 			$Menu.show()
 		"Game":
 			$HUD/ScoreTimer.start()
+			$HUD/ScoreBackground.show()
 			$GameOver.hide()
 			$Menu.hide()
 

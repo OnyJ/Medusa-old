@@ -127,6 +127,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ScoreBackground" type="ColorRect" parent="HUD"]
+visible = false
+margin_left = 285.0
+margin_top = 6.0
+margin_right = 451.0
+margin_bottom = 50.0
+color = Color( 0.227451, 0.901961, 0.34902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TimeScoreLabel" type="Label" parent="HUD"]
 margin_left = 289.422
 margin_top = 13.416
