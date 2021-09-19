@@ -17,7 +17,7 @@ size = Vector3( 1, 1, 1 )
 extents = Vector3( 2.058, 1, 2.56726 )
 
 [sub_resource type="BoxShape" id=6]
-extents = Vector3( 1, 1.45135, 19.5204 )
+extents = Vector3( 1, 1.45135, 20.8304 )
 
 [node name="Medusa" type="KinematicBody"]
 transform = Transform( -0.8, 0, -2.7259e-07, 0, 1.5, 0, 3.11531e-07, 0, -0.7, 0, 1.47819, 0 )
@@ -50,12 +50,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, -1.98952e-13, 0, 1, 8.50752e-07, 0.0236
 shape = SubResource( 5 )
 
 [node name="WideEyeDetector" type="Area" parent="."]
-transform = Transform( 1, 0, -1.98952e-13, 0, 1, 0, -2.27374e-13, 0, 1, -2.49702e-06, 0.404879, 7.32827 )
+transform = Transform( 1, 0, -3.41061e-13, 0, 1, 0, -3.41061e-13, 0, 1, -2.49702e-06, 0.404879, 7.32827 )
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="WideEyeDetector"]
-transform = Transform( 1, 0, 0, 0, 1, 0, -5.68434e-14, 0, 1, -4.34156e-06, 0, 12.7417 )
+transform = Transform( 1, 0, 1.13687e-13, 0, 1, 0, 0, 0, 1, -4.34156e-06, 0, 12.7417 )
 shape = SubResource( 6 )
 [connection signal="body_entered" from="ShortEyeDetector" to="." method="_on_ShortEyeDetector_body_entered"]
 [connection signal="body_entered" from="WideEyeDetector" to="." method="_on_WideEyeDetector_body_entered"]
