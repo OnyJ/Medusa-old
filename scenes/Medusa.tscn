@@ -59,3 +59,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, -5.68434e-14, 0, 1, -4.34156e-06, 0, 12
 shape = SubResource( 6 )
 [connection signal="body_entered" from="WideEyeDetector" to="." method="_on_WideEyeDetector_body_entered"]
 [connection signal="body_entered" from="VeryWideLook" to="." method="_on_VeryWideLook_body_entered"]
+[connection signal="body_exited" from="VeryWideLook" to="." method="_on_VeryWideLook_body_exited"]

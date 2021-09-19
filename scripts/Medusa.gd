@@ -22,30 +22,27 @@ onready var nav = get_parent() # nav mesh that contains the whole world geometry
 onready var player = $"../../../Player"
 onready var player_position = player.global_transform.origin
 #####
-
-# var chasing = false
-# enum = multiple constants in same place
 enum {
 	CHILL
 	CHASE
 }
 var state = CHILL
+var looking_at_player = false
+var chase_time = 4
 onready var raycast = $RayCast
-export var gravity = 75
 
 
 func _physics_process(delta):
-	
-	# if collision, chase for x seconds
-	match state: # like a switch
+	match state:
 		CHILL:
-			pass
+			rotate_y(-0.05)
 		CHASE:
 			print("chasing")
 			look_at_player()
 			follow_player(delta)
-			yield(get_tree().create_timer(1.5), "timeout")
+			yield(get_tree().create_timer(chase_time), "timeout")
 			state = CHILL
+			chase_time = 4
 			print("stop chasing")
 
 
@@ -56,8 +53,10 @@ func look_at_player():
 #	self.rotate(Vector3.UP, rotation.y)
 #	self.rotate_y()
 #	direction = velocity.rotated(Vector3.UP, rotation.y)
-	
-	pass
+	if !looking_at_player:
+		rotate_y(0.05)			
+	elif state == CHASE and looking_at_player:
+		chase_time += 3
 
 func follow_player(delta):
 	if path_node < path.size():
@@ -80,9 +79,12 @@ func _on_WideEyeDetector_body_entered(body):
 	print("player entered")
 
 func _on_VeryWideLook_body_entered(body):
+	looking_at_player = true
 	state = CHASE
 	print("player aligned")
 
+func _on_VeryWideLook_body_exited(body):
+	looking_at_player = false
 
 ##########################
 # detect player
@@ -120,5 +122,6 @@ func _on_VeryWideLook_body_entered(body):
 
 ##########################
 # (spawn randomly)
+
 
 
