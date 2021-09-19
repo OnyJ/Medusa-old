@@ -33,6 +33,7 @@ func handle_player_control(delta):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	velocity = move_and_slide(velocity, Vector3.UP)
+	$AnimationPlayer.play("move")
 
 	# gravity
 	velocity.y -= gravity * delta
