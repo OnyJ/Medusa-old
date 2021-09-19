@@ -1,35 +1,28 @@
 extends KinematicBody
 
-
 # TODO
 # required :
 # x follow player
-# - detect player (far/near)
+# x detect player (far/near)
 # - follow when detected for x sec
 # - kill when eyes meet
 # later :
 # - move randomly / stroll
 # - spawn randomly
 
-
-#####
-# => Follow Player Vars
-# Godot uses multiple points (nodes) for a path.
-var path = [] # to store nodes
-var path_node = 0 # keep path on which node we're currently on
-var speed = 12
-onready var nav = get_parent() # nav mesh that contains the whole world geometry
-onready var player = $"../../../Player"
-onready var player_position = player.global_transform.origin
-#####
 enum {
 	CHILL
 	CHASE
 }
+var speed = 12
 var state = CHILL
 var looking_at_player = false
 var chase_time = 4
-onready var raycast = $RayCast
+# Godot uses multiple points (nodes) for a path.
+var path = [] # to store nodes
+var path_node = 0 # keep path on which node we're currently on
+onready var nav = get_parent() # nav mesh that contains the whole world geometry
+onready var player = $"../../../Player"
 
 
 func _physics_process(delta):
@@ -46,15 +39,9 @@ func _physics_process(delta):
 			print("stop chasing")
 
 
-
 func look_at_player():
-#	look_at_from_position(global_transform.origin, player_position, Vector3.UP)
-#	look_at(player_position, Vector3.UP)
-#	self.rotate(Vector3.UP, rotation.y)
-#	self.rotate_y()
-#	direction = velocity.rotated(Vector3.UP, rotation.y)
 	if !looking_at_player:
-		rotate_y(0.05)			
+		rotate_y(0.05)
 	elif state == CHASE and looking_at_player:
 		chase_time += 3
 
@@ -72,16 +59,14 @@ func move_to(target_pos):
 	path_node = 0
 
 func _on_Timer_timeout():
-	move_to(player.global_transform.origin) # location of player
-
+	move_to(player.global_transform.origin)
 
 func _on_WideEyeDetector_body_entered(body):
-	print("player entered")
+	pass
 
 func _on_VeryWideLook_body_entered(body):
 	looking_at_player = true
 	state = CHASE
-	print("player aligned")
 
 func _on_VeryWideLook_body_exited(body):
 	looking_at_player = false
