@@ -9,7 +9,7 @@ onready var main = $"../../../Main"
 
 
 func _physics_process(delta):
-	if main.game_is_started:
+	if main.game_is_started and !main.game_over:
 		handle_player_control(delta)
 
 
@@ -40,4 +40,5 @@ func handle_player_control(delta):
 
 func get_petrified():
 	emit_signal("petrified")
-	print("petrified")
+	main.game_over = true
+	print(main.game_over)

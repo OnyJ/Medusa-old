@@ -17,4 +17,6 @@ transform = Transform( 1, 0, 0, 0, 0.993429, 0.114452, 0, -0.114452, 0.993429, 0
 current = true
 
 [node name="UI" parent="." instance=ExtResource( 2 )]
+[connection signal="petrified" from="Map" to="." method="_on_Map_petrified"]
 [connection signal="start_game" from="UI" to="." method="_on_UI_start_game"]
+[connection signal="start_game" from="UI" to="Map" method="_on_UI_start_game"]

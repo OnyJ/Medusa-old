@@ -8,7 +8,6 @@ func show_screen(name):
 		"GameOver":
 			$GameOver.show()
 			yield(get_tree().create_timer(1.0), "timeout")
-			show_screen("Menu")
 		"Menu":
 			$GameOver.hide()
 			$Menu.show()
@@ -22,3 +21,8 @@ func _on_Play_pressed():
 	# allow Medusa to move
 	show_screen("Game")
 	emit_signal("start_game")
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept"):
+		show_screen("Menu")
+		get_tree().reload_current_scene()

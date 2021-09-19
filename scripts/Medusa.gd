@@ -29,7 +29,7 @@ onready var main = $"../../../../../Main"
 
 
 func _physics_process(delta):
-	if main.game_is_started:	
+	if main.game_is_started and !main.game_over:	
 		match state:
 			CHILL:
 				rotate_y(-0.05)
