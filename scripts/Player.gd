@@ -1,12 +1,19 @@
 extends KinematicBody
 
+signal petrified
 
 export var speed = 14
 export var gravity = 75
 var velocity = Vector3.ZERO
+onready var main = $"../../../Main"
 
 
 func _physics_process(delta):
+	if main.game_is_started:
+		handle_player_control(delta)
+
+
+func handle_player_control(delta):
 	var direction = Vector3.ZERO
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
@@ -29,3 +36,8 @@ func _physics_process(delta):
 
 	# gravity
 	velocity.y -= gravity * delta
+
+
+func get_petrified():
+	emit_signal("petrified")
+	print("petrified")

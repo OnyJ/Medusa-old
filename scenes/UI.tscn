@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/UI.gd" type="Script" id=1]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.521569, 0.207843, 0.941176, 0.592157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dead" type="Label" parent="GameOver"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+text = "u dead"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionRequest" type="Label" parent="GameOver"]
+anchor_left = 0.5
+anchor_top = 0.699
+anchor_right = 0.5
+anchor_bottom = 0.699
+margin_left = -99.8336
+margin_top = -4.48621
+margin_right = 102.166
+margin_bottom = 9.51379
+text = "Type Space or Enter to continue"
+
+[node name="Menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBackground" type="ColorRect" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.741176, 0.654902, 0.411765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextBackground" type="ColorRect" parent="Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -178.947
+margin_right = 222.053
+color = Color( 0.854902, 0.780392, 0.298039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Menu"]
+margin_left = 489.611
+margin_top = 365.057
+margin_right = 527.611
+margin_bottom = 385.057
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Menu/Play" to="." method="_on_Play_pressed"]

@@ -14,7 +14,7 @@ material = SubResource( 2 )
 size = Vector3( 1, 1, 1 )
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 3.02191, 1, 5.22927 )
+extents = Vector3( 2.058, 1, 2.56726 )
 
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 1, 1.45135, 19.5204 )
@@ -46,7 +46,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="ShortEyeDetector"]
-transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, -8.52651e-14, 0, 1, 6.82121e-13, 0.0236223, 5.95281 )
+transform = Transform( 1, 0, 0, 0, 1, 0, -1.98952e-13, 0, 1, 8.50752e-07, 0.0236223, 3.45601 )
 shape = SubResource( 5 )
 
 [node name="WideEyeDetector" type="Area" parent="."]

@@ -10,6 +10,8 @@ extends KinematicBody
 # - move randomly / stroll
 # - spawn randomly
 
+signal petrify
+
 enum {
 	CHILL
 	CHASE
@@ -23,19 +25,21 @@ var path = [] # to store nodes
 var path_node = 0 # keep path on which node we're currently on
 onready var nav = get_parent() # nav mesh that contains the whole world geometry
 onready var player = $"../../../Player"
+onready var main = $"../../../../../Main"
 
 
 func _physics_process(delta):
-	match state:
-		CHILL:
-			rotate_y(-0.05)
-		CHASE:
-			look_at_player()
-			follow_player(delta)
-			yield(get_tree().create_timer(chase_time), "timeout")
-			state = CHILL
-			chase_time = 0
-			add_chase_time()
+	if main.game_is_started:	
+		match state:
+			CHILL:
+				rotate_y(-0.05)
+			CHASE:
+				look_at_player()
+				follow_player(delta)
+				yield(get_tree().create_timer(chase_time), "timeout")
+				state = CHILL
+				chase_time = 0
+				add_chase_time()
 
 
 func look_at_player():
@@ -63,8 +67,9 @@ func add_chase_time():
 func _on_Timer_timeout():
 	move_to(player.global_transform.origin)
 
-func _on_ShortEyeDetector_body_entered():
-	pass # Replace with function body.
+func _on_ShortEyeDetector_body_entered(body):
+	print("petrify")
+	emit_signal("petrify")
 
 func _on_WideEyeDetector_body_entered(body):
 	looking_at_player = true
