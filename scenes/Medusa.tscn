@@ -5,8 +5,23 @@
 
 [sub_resource type="CylinderShape" id=1]
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.364706, 0.133333, 0.705882, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
@@ -24,33 +39,18 @@ albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
 albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=13]
-albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=15]
-albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=16]
-albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=17]
-albedo_color = Color( 0.0352941, 0.298039, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.294118, 0, 0.815686, 1 )
 
-[sub_resource type="CylinderMesh" id=3]
-material = SubResource( 2 )
+[sub_resource type="CylinderMesh" id=14]
+material = SubResource( 13 )
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="CubeMesh" id=15]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 2.058, 1, 2.56726 )
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 2.45877, 1, 4.82289 )
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=17]
 extents = Vector3( 1, 1.45135, 20.8304 )
 
 [sub_resource type="Animation" id=18]
@@ -80,31 +80,31 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="medusa_3" type="MeshInstance" parent="."]
-transform = Transform( 0.5, 0, 8.52651e-14, 0, 0.17, 0, -2.84217e-13, 0, 0.5, 0, -0.948677, 0 )
+transform = Transform( 0.5, 0, 8.52651e-14, 0, 0.17, 0, -2.84217e-13, 0, 0.5, 0, -0.951258, 0 )
 layers = 4
 mesh = ExtResource( 2 )
-material/0 = SubResource( 7 )
-material/1 = SubResource( 8 )
-material/2 = SubResource( 9 )
-material/3 = SubResource( 10 )
-material/4 = SubResource( 11 )
-material/5 = SubResource( 12 )
-material/6 = SubResource( 13 )
-material/7 = SubResource( 14 )
-material/8 = SubResource( 15 )
-material/9 = SubResource( 16 )
-material/10 = SubResource( 17 )
+material/0 = SubResource( 2 )
+material/1 = SubResource( 3 )
+material/2 = SubResource( 4 )
+material/3 = SubResource( 5 )
+material/4 = SubResource( 6 )
+material/5 = SubResource( 7 )
+material/6 = SubResource( 8 )
+material/7 = SubResource( 9 )
+material/8 = SubResource( 10 )
+material/9 = SubResource( 11 )
+material/10 = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 visible = false
 layers = 4
-mesh = SubResource( 3 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454127, 0.784512 )
 layers = 4
-mesh = SubResource( 4 )
+mesh = SubResource( 15 )
 material/0 = null
 
 [node name="ShortEyeDetector" type="Area" parent="." groups=[
@@ -114,8 +114,8 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="ShortEyeDetector"]
-transform = Transform( 1, 0, 0, 0, 1, 0, -1.98952e-13, 0, 1, 8.50752e-07, 0.0236223, 3.45601 )
-shape = SubResource( 5 )
+transform = Transform( 1, 0, -1.98952e-13, 0, 1, 0, -3.97904e-13, 0, 1, 1.01218e-06, 0.0236223, 2.98226 )
+shape = SubResource( 16 )
 
 [node name="WideEyeDetector" type="Area" parent="."]
 transform = Transform( 1, 0, -3.41061e-13, 0, 1, 0, -3.41061e-13, 0, 1, -2.49702e-06, 0.404879, 7.32827 )
@@ -124,7 +124,7 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="WideEyeDetector"]
 transform = Transform( 1, 0, -7.11332e-08, 0, 1, 0, -9.29089e-08, 0, 1.20876, -6.64588e-06, 0, 19.5044 )
-shape = SubResource( 6 )
+shape = SubResource( 17 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "jump"

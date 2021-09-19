@@ -11,7 +11,7 @@ enum {
 	CHILL
 	CHASE
 }
-var speed = 12
+var speed = 28
 var state = CHILL
 var looking_at_player = false
 var chase_time = 4
