@@ -1,6 +1,7 @@
 extends KinematicBody
 
 # TODO
+# - stop turning when player in front doesn't move
 # - move randomly / stroll
 # - spawn randomly
 
