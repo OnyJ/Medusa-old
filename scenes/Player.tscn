@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/player/player.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/player/PlayerTexture.png" type="Texture" id=3]
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.227451, 0.392157, 0.65098, 1 )
@@ -16,6 +18,9 @@ material = SubResource( 6 )
 
 [sub_resource type="SphereMesh" id=8]
 
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 3 )
+
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 0.4609, 2.08441, 0.46923 )
 
@@ -29,25 +34,32 @@ script = ExtResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
-[node name="MeshInstance" type="MeshInstance" parent="Pivot"]
+[node name="OldPlayerObj" type="MeshInstance" parent="Pivot"]
 transform = Transform( 0.5, 0, 0, 0, 1.5, 0, 0, 0, 0.5, 0, 0, 0 )
+visible = false
 layers = 2
 mesh = SubResource( 5 )
 material/0 = null
 
-[node name="Head" type="Spatial" parent="Pivot"]
+[node name="Head" type="Spatial" parent="Pivot/OldPlayerObj"]
+transform = Transform( 2, 0, 0, 0, 0.666667, 0, 0, 0, 2, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Pivot/Head"]
+[node name="MeshInstance" type="MeshInstance" parent="Pivot/OldPlayerObj/Head"]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.5, 0, 1.84009, 0 )
 layers = 2
 mesh = SubResource( 7 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="Pivot/Head"]
+[node name="MeshInstance2" type="MeshInstance" parent="Pivot/OldPlayerObj/Head"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.889, -0.807182 )
 layers = 2
 mesh = SubResource( 8 )
 material/0 = null
+
+[node name="PlayerObj" type="MeshInstance" parent="Pivot"]
+transform = Transform( -0.5, 0, -1.94707e-07, 0, 0.3, 0, 1.94707e-07, 0, -0.5, 0, -1.52679, 0 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.542482, 0 )
