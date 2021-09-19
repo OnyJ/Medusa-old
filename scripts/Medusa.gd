@@ -35,24 +35,28 @@ export var gravity = 75
 
 
 func _physics_process(delta):
-	look_at_player()
-	follow_player(delta)
 	
 	# if collision, chase for x seconds
 	match state: # like a switch
 		CHILL:
 			pass
 		CHASE:
-#			print("chasing")
-			pass
+			print("chasing")
+			look_at_player()
+			follow_player(delta)
+			yield(get_tree().create_timer(1.5), "timeout")
+			state = CHILL
+			print("stop chasing")
+
 
 
 func look_at_player():
-	look_at_from_position(global_transform.origin, player_position, Vector3.UP)
+#	look_at_from_position(global_transform.origin, player_position, Vector3.UP)
 #	look_at(player_position, Vector3.UP)
 #	self.rotate(Vector3.UP, rotation.y)
 #	self.rotate_y()
 #	direction = velocity.rotated(Vector3.UP, rotation.y)
+	
 	pass
 
 func follow_player(delta):
@@ -74,6 +78,10 @@ func _on_Timer_timeout():
 
 func _on_WideEyeDetector_body_entered(body):
 	print("player entered")
+
+func _on_VeryWideLook_body_entered(body):
+	state = CHASE
+	print("player aligned")
 
 
 ##########################
@@ -112,4 +120,5 @@ func _on_WideEyeDetector_body_entered(body):
 
 ##########################
 # (spawn randomly)
+
 
