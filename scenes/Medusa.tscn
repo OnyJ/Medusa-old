@@ -39,24 +39,24 @@ layers = 4
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="WideEyeDetector" type="Area" parent="." groups=[
+[node name="ShortEyeDetector" type="Area" parent="." groups=[
 "medusa",
 ]]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="WideEyeDetector"]
+[node name="CollisionShape" type="CollisionShape" parent="ShortEyeDetector"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, -8.52651e-14, 0, 1, 6.82121e-13, 0.0236223, 5.95281 )
 shape = SubResource( 5 )
 
-[node name="VeryWideLook" type="Area" parent="."]
+[node name="WideEyeDetector" type="Area" parent="."]
 transform = Transform( 1, 0, -1.98952e-13, 0, 1, 0, -2.27374e-13, 0, 1, -2.49702e-06, 0.404879, 7.32827 )
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="VeryWideLook"]
+[node name="CollisionShape" type="CollisionShape" parent="WideEyeDetector"]
 transform = Transform( 1, 0, 0, 0, 1, 0, -5.68434e-14, 0, 1, -4.34156e-06, 0, 12.7417 )
 shape = SubResource( 6 )
+[connection signal="body_entered" from="ShortEyeDetector" to="." method="_on_ShortEyeDetector_body_entered"]
 [connection signal="body_entered" from="WideEyeDetector" to="." method="_on_WideEyeDetector_body_entered"]
-[connection signal="body_entered" from="VeryWideLook" to="." method="_on_VeryWideLook_body_entered"]
-[connection signal="body_exited" from="VeryWideLook" to="." method="_on_VeryWideLook_body_exited"]
+[connection signal="body_exited" from="WideEyeDetector" to="." method="_on_WideEyeDetector_body_exited"]

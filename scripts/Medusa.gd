@@ -4,7 +4,7 @@ extends KinematicBody
 # required :
 # x follow player
 # x detect player (far/near)
-# - follow when detected for x sec
+# x follow when detected for x sec
 # - kill when eyes meet
 # later :
 # - move randomly / stroll
@@ -28,17 +28,14 @@ onready var player = $"../../../Player"
 func _physics_process(delta):
 	match state:
 		CHILL:
-			# search_player:
 			rotate_y(-0.05)
 		CHASE:
-			print("chasing")
 			look_at_player()
 			follow_player(delta)
 			yield(get_tree().create_timer(chase_time), "timeout")
 			state = CHILL
 			chase_time = 0
 			add_chase_time()
-			print("stop chasing")
 
 
 func look_at_player():
@@ -66,15 +63,16 @@ func add_chase_time():
 func _on_Timer_timeout():
 	move_to(player.global_transform.origin)
 
-func _on_WideEyeDetector_body_entered(body):
-	pass
+func _on_ShortEyeDetector_body_entered():
+	pass # Replace with function body.
 
-func _on_VeryWideLook_body_entered(body):
+func _on_WideEyeDetector_body_entered(body):
 	looking_at_player = true
 	state = CHASE
 
-func _on_VeryWideLook_body_exited(body):
+func _on_WideEyeDetector_body_exited(body):
 	looking_at_player = false
+
 
 ##########################
 # detect player
@@ -112,6 +110,10 @@ func _on_VeryWideLook_body_exited(body):
 
 ##########################
 # (spawn randomly)
+
+
+
+
 
 
 
